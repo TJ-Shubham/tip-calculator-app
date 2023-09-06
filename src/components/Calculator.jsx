@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 
 export default function Calculator() {
     const[bill, setBill] = useState('');
@@ -6,6 +7,7 @@ export default function Calculator() {
     const[people, setPeople] = useState('');
     const[tipAmount, setTipAmount] = useState("0.00");
     const[personAmount, setPersonAmount] = useState("0.00");
+    
 
     function handleBillChange(e){
         const value = e.target.value;
@@ -74,15 +76,15 @@ export default function Calculator() {
 }
 
 
-
-
 function Bill({bill, onBillChange, tip, onTipChange, percentTip, onPercentTipChange, people, onPeopleChange}) {
     const arr = [5,10,15,25,50];
+
+
     return(
         <div className="bill">
             <div className="bill-amount">
                 <label>Bill</label>
-                <input type="text" placeholder="0" value={bill} onChange={onBillChange}/>
+                <input type="number" placeholder="0" value={bill} onChange={onBillChange}/>
             </div>
             <div className="tip">
                 <p>Select Tip %</p>
@@ -121,8 +123,7 @@ function Display({tipAmount, personAmount, onReset}){
             </div>
 
             </div>
-            
-            <button onClick={onReset}>RESET</button>
+            <button onClick={onReset} disabled={tipAmount === "0.00" && personAmount === "0.00"}>RESET</button>
         </div>
     );
 }
