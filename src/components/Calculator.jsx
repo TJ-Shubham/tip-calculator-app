@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Bill from "./Bill";
+import Display from "./Display";
 
 export default function Calculator() {
     const[bill, setBill] = useState('');
@@ -71,60 +73,16 @@ export default function Calculator() {
             personAmount={personAmount}
             onReset={handleReset}
         />
+        <div className="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>. Coded by <a href="https://github.com/TJ-Shubham"> Shubham</a>.
+        </div>
     </div>
   )
 }
 
 
-function Bill({bill, onBillChange, tip, onTipChange, percentTip, onPercentTipChange, people, onPeopleChange}) {
-    const arr = [5,10,15,25,50];
 
 
-    return(
-        <div className="bill">
-            <div className="bill-amount">
-                <label>Bill</label>
-                <input type="number" placeholder="0" value={bill} onChange={onBillChange}/>
-            </div>
-            <div className="tip">
-                <p>Select Tip %</p>
-                <div className="tip-button">
-                {arr.map(item => 
-                    <Button onClick={onTipChange} key={item} disabled={percentTip !== ""}>{item}</Button>)
-                }
-                <input type="text" placeholder="Custom" value={percentTip} onChange={onPercentTipChange} disabled={tip !== ""}/>
-                </div>
-            </div>
-            <div className="people">
-                <label>Number of People</label>
-                <input type="text" placeholder="0" value={people} onChange={onPeopleChange}/>
-            </div>
-        </div>
-    );
-    
-}
-
-function Button({ children, onClick, disabled }){
-    return <button onClick={() => onClick(children)} disabled={disabled}>{children}%</button>;
-}
 
 
-function Display({tipAmount, personAmount, onReset}){
-    return(
-        <div className="display">
-            <div className="amounts">
-            <div className="amount">
-                <p><span>Tip Amount</span><br />/ person</p>
-                <p>${tipAmount}</p>
-            </div>
-            <div className="amount">
-                <p><span>Total</span><br />/ person</p>
-                <p>${personAmount}</p>
-            </div>
-
-            </div>
-            <button onClick={onReset} disabled={tipAmount === "0.00" && personAmount === "0.00"}>RESET</button>
-        </div>
-    );
-}
 
