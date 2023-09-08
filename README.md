@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Link](https://github.com/TJ-Shubham/tip-calculator-app)
-- Live Site URL: [Link]
+- Live Site URL: [Link](https://tj-shubham.github.io/tip-calculator-app/)
 
 ## My process
 
